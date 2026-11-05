@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.FocusGuard" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.FocusGuard" parent="android:style/Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@color/focus_guard_background</item>
+        <item name="android:colorAccent">@color/focus_guard_primary</item>
+        <item name="android:navigationBarColor">@color/focus_guard_background</item>
+        <item name="android:statusBarColor">@color/focus_guard_background</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
 
     <style name="Theme.FocusGuard.Starting" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/splash_background</item>

@@ -1,5 +1,6 @@
 package com.example.focusguard.ui.home.components
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -17,6 +18,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.example.focusguard.ui.theme.FocusGuardCard
+import com.example.focusguard.ui.theme.FocusGuardPrimary
 
 @Composable
 fun MenuCard(
@@ -31,7 +34,10 @@ fun MenuCard(
         modifier = modifier
             .fillMaxWidth()
             .clickable(onClick = onClick),
-        elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
+        colors = CardDefaults.cardColors(containerColor = FocusGuardCard.copy(alpha = 0.42f)),
+        shape = MaterialTheme.shapes.large,
+        border = BorderStroke(1.dp, FocusGuardPrimary.copy(alpha = 0.28f)),
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
         Row(modifier = Modifier.padding(16.dp)) {
             Icon(

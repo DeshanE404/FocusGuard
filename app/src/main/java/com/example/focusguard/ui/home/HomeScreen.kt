@@ -31,14 +31,17 @@ private data class HomeMenuItem(
 )
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(
+    onAppTimeLimitsClick: () -> Unit = {},
+    onSecurityClick: () -> Unit = {},
+    onSettingsClick: () -> Unit = {}
+) {
     val snackbarHostState = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
     val menuItems = remember {
         listOf(
             HomeMenuItem("Monitored Apps", "Choose apps to limit", R.drawable.ic_menu_apps, "Monitored apps"),
             HomeMenuItem("App Time Limits", "Set daily usage limits", R.drawable.ic_menu_time, "App time limits"),
-            HomeMenuItem("Study Schedule", "Configure focus hours", R.drawable.ic_menu_schedule, "Study schedule"),
             HomeMenuItem("PIN & Security", "Protect app settings", R.drawable.ic_menu_security, "PIN and security"),
             HomeMenuItem("Settings", "Notifications and preferences", R.drawable.ic_menu_settings, "Settings")
         )
@@ -68,7 +71,12 @@ fun HomeScreen() {
                     iconDescription = item.contentDescription,
                     title = item.title,
                     description = item.description,
-                    onClick = { scope.launch { snackbarHostState.showSnackbar("Coming soon") } }
+                    onClick = when (item.title) {
+                        "App Time Limits" -> onAppTimeLimitsClick
+                        "PIN & Security" -> onSecurityClick
+                        "Settings" -> onSettingsClick
+                        else -> { { scope.launch { snackbarHostState.showSnackbar("Coming soon") } } }
+                    } as () -> Unit
                 )
             }
         }

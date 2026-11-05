@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="splash_background">#10201F</color>
+    <color name="focus_guard_background">#171717</color>
+    <color name="focus_guard_primary">#8DE8E1</color>
 </resources>

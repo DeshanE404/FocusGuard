@@ -35,9 +35,17 @@ fun StatusCard(
             modifier = Modifier.padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            Text("Today’s social media usage: ${socialUsageMinutes}m", style = MaterialTheme.typography.titleMedium)
-            Row(horizontalArrangement = Arrangement.spacedBy(24.dp)) {
-                Text("Monitored apps: $monitoredApps", style = MaterialTheme.typography.bodyMedium)
+            Text("Social media usage", style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Text("${socialUsageMinutes} min", style = MaterialTheme.typography.headlineSmall)
+            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(
+                        "Monitored apps",
+                        style = MaterialTheme.typography.labelMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    Text("$monitoredApps active", style = MaterialTheme.typography.titleMedium)
+                }
             }
         }
     }

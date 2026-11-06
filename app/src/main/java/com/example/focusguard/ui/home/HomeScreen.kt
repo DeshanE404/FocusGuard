@@ -62,18 +62,21 @@ fun HomeScreen(
                 .padding(padding),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            Column(modifier = Modifier.fillMaxWidth()) {
-                Text("FocusGuard", style = MaterialTheme.typography.headlineMedium)
+            Column(modifier = Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                Text("FOCUS MODE", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.primary)
+                Text("FocusGuard", style = MaterialTheme.typography.headlineLarge)
                 Text(
                     "Protect your study time",
                     style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
+            Text("Today", style = MaterialTheme.typography.titleMedium)
             StatusCard(
                 socialUsageMinutes = status.socialUsageMinutes,
                 monitoredApps = status.monitoredApps
             )
+            Text("Quick actions", style = MaterialTheme.typography.titleMedium)
             menuItems.forEach { item ->
                 MenuCard(
                     icon = item.icon,

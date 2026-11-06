@@ -2,8 +2,8 @@
 <resources>
 
     <style name="Theme.FocusGuard.Starting" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@color/splash_background</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_focus_guard_splash</item>
+        <item name="windowSplashScreenBackground">@color/focus_guard_background</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_screen</item>
         <item name="postSplashScreenTheme">@style/Theme.FocusGuard</item>
     </style>
 </resources>

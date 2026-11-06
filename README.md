@@ -6,7 +6,7 @@
 <img src="https://img.shields.io/badge/platform-Android-3DDC84?logo=android&logoColor=white" alt="Android" />
 <img src="https://img.shields.io/badge/language-Kotlin-7F52FF?logo=kotlin&logoColor=white" alt="Kotlin" />
 <img src="https://img.shields.io/badge/UI-Jetpack%20Compose-4285F4?logo=jetpackcompose&logoColor=white" alt="Jetpack Compose" />
-<img src="https://img.shields.io/badge/license-TBD-lightgrey" alt="License" />
+<img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License" />
 </p>
 
 FocusGuard reduces social-media distractions by tracking daily usage, enforcing per-app limits, and showing a lock screen when a configured allowance is exhausted.
@@ -223,7 +223,7 @@ app/src/main/java/com/example/focusguard/
 
 ## License
 
-License has not been selected yet. Add license text before publishing or distributing this project publicly.
+FocusGuard is licensed under the [MIT License](LICENSE).
 
 ## Disclaimer
 

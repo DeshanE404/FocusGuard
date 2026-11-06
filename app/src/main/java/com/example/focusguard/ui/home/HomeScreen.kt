@@ -40,7 +40,6 @@ fun HomeScreen(
     val scope = rememberCoroutineScope()
     val menuItems = remember {
         listOf(
-            HomeMenuItem("Monitored Apps", "Choose apps to limit", R.drawable.ic_menu_apps, "Monitored apps"),
             HomeMenuItem("App Time Limits", "Set daily usage limits", R.drawable.ic_menu_time, "App time limits"),
             HomeMenuItem("PIN & Security", "Protect app settings", R.drawable.ic_menu_security, "PIN and security"),
             HomeMenuItem("Settings", "Notifications and preferences", R.drawable.ic_menu_settings, "Settings")

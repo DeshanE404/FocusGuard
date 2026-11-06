@@ -17,7 +17,11 @@ import com.example.focusguard.ui.theme.FocusGuardCard
 import com.example.focusguard.ui.theme.FocusGuardPrimary
 
 @Composable
-fun StatusCard(modifier: Modifier = Modifier) {
+fun StatusCard(
+    socialUsageMinutes: Int = 0,
+    monitoredApps: Int = 0,
+    modifier: Modifier = Modifier
+) {
     Card(
         modifier = modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(
@@ -31,10 +35,9 @@ fun StatusCard(modifier: Modifier = Modifier) {
             modifier = Modifier.padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            Text("Today’s social media usage: 0m", style = MaterialTheme.typography.titleMedium)
+            Text("Today’s social media usage: ${socialUsageMinutes}m", style = MaterialTheme.typography.titleMedium)
             Row(horizontalArrangement = Arrangement.spacedBy(24.dp)) {
-                Text("Study mode: Off", style = MaterialTheme.typography.bodyMedium)
-                Text("Monitored apps: 0", style = MaterialTheme.typography.bodyMedium)
+                Text("Monitored apps: $monitoredApps", style = MaterialTheme.typography.bodyMedium)
             }
         }
     }

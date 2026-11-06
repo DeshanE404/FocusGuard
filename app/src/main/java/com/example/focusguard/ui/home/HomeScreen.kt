@@ -15,10 +15,14 @@ import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.focusguard.ui.home.components.MenuCard
 import com.example.focusguard.ui.home.components.StatusCard
 import kotlinx.coroutines.launch
@@ -36,13 +40,16 @@ fun HomeScreen(
     onSecurityClick: () -> Unit = {},
     onSettingsClick: () -> Unit = {}
 ) {
+    val statusViewModel: HomeStatusViewModel = viewModel()
+    val status by statusViewModel.status.collectAsState()
+    LaunchedEffect(Unit) { statusViewModel.refresh() }
     val snackbarHostState = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
     val menuItems = remember {
         listOf(
-            HomeMenuItem("App Time Limits", "Set daily usage limits", R.drawable.ic_menu_time, "App time limits"),
-            HomeMenuItem("PIN & Security", "Protect app settings", R.drawable.ic_menu_security, "PIN and security"),
-            HomeMenuItem("Settings", "Notifications and preferences", R.drawable.ic_menu_settings, "Settings")
+            HomeMenuItem("App Time Limits", "Set daily usage limits", R.drawable.clock, "App time limits"),
+            HomeMenuItem("PIN & Security", "Protect app settings", R.drawable.password, "PIN and security"),
+            HomeMenuItem("Settings", "Notifications and preferences", R.drawable.settings, "Settings")
         )
     }
 
@@ -63,7 +70,10 @@ fun HomeScreen(
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
-            StatusCard()
+            StatusCard(
+                socialUsageMinutes = status.socialUsageMinutes,
+                monitoredApps = status.monitoredApps
+            )
             menuItems.forEach { item ->
                 MenuCard(
                     icon = item.icon,
@@ -74,7 +84,13 @@ fun HomeScreen(
                         "App Time Limits" -> onAppTimeLimitsClick
                         "PIN & Security" -> onSecurityClick
                         "Settings" -> onSettingsClick
-                        else -> { { scope.launch { snackbarHostState.showSnackbar("Coming soon") } } }
+                        else -> {
+                            {
+                                scope.launch {
+                                    snackbarHostState.showSnackbar("Coming soon")
+                                }
+                            }
+                        }
                     } as () -> Unit
                 )
             }

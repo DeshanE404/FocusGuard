@@ -1,9 +1,11 @@
 package com.example.focusguard.ui.home.components
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.ui.Alignment
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -39,12 +41,14 @@ fun MenuCard(
         border = BorderStroke(1.dp, FocusGuardPrimary.copy(alpha = 0.28f)),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
-        Row(modifier = Modifier.padding(16.dp)) {
-            Icon(
+        Row(
+            modifier = Modifier.padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Image(
                 painter = painterResource(icon),
                 contentDescription = iconDescription,
-                tint = MaterialTheme.colorScheme.primary,
-                modifier = Modifier.size(28.dp)
+                modifier = Modifier.size(36.dp)
             )
             Spacer(Modifier.width(16.dp))
             Column {

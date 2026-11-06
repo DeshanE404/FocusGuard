@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.Image
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -42,6 +43,13 @@ fun AppLimitCard(
         else -> Color(0xFF43A047)
     }
     val disabled = !appLimit.isEnabled
+    val appIcon = when (appLimit.packageName) {
+        "com.zhiliaoapp.musically" -> R.drawable.tiktok
+        "com.facebook.katana" -> R.drawable.facebook
+        "com.google.android.youtube" -> R.drawable.youtube
+        "com.instagram.android" -> R.drawable.instagram
+        else -> null
+    }
 
     Card(
         modifier = modifier
@@ -54,12 +62,20 @@ fun AppLimitCard(
     ) {
         Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
             Row(modifier = Modifier.fillMaxWidth()) {
-                Icon(
-                    painter = painterResource(R.drawable.ic_menu_apps),
-                    contentDescription = "${appLimit.appName} icon",
-                    tint = MaterialTheme.colorScheme.primary,
-                    modifier = Modifier.size(32.dp)
-                )
+                if (appIcon != null) {
+                    Image(
+                        painter = painterResource(appIcon),
+                        contentDescription = "${appLimit.appName} icon",
+                        modifier = Modifier.size(32.dp)
+                    )
+                } else {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_menu_apps),
+                        contentDescription = "${appLimit.appName} icon",
+                        tint = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier.size(32.dp)
+                    )
+                }
                 Spacer(Modifier.width(12.dp))
                 Text(
                     text = appLimit.appName,
